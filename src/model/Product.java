@@ -9,7 +9,15 @@ public abstract class Product {
 	
 	//Concrete methodes
 	public int getPrijs(int hoeveelheid){return 0;}
-	public String toString(){return "";}
+	
+	
+	/*
+	 * Geeft beschrijving met naam, eenheid, en prijs
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString(){
+		return "[" + getNaam() + ", " + getEenheid() + ", " + getPrijsPerEenheid() + "]";
+	}
 	
 	
 	
