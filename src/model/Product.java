@@ -8,7 +8,9 @@ public abstract class Product {
 	
 	
 	//Concrete methodes
-	public int getPrijs(int hoeveelheid){return 0;}
+	public int getPrijs(int hoeveelheid){	
+		return hoeveelheid * getPrijsPerEenheid();
+	}
 	
 	
 	/*
