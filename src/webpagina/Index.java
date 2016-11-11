@@ -19,7 +19,7 @@ import model.Product;
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static ArrayList<DefaultProduct> voorraad = new ArrayList<>();
+	public static ArrayList<DefaultProduct> voorraad = new ArrayList<>();
 	static {
 		voorraad.add(new DefaultProduct("Opgezette vlinder", 120, "/DynamicWebshop/images/atalanta.jpg", Product.STUK));
 		voorraad.add(new DefaultProduct("Industriële bouwlamp", 160, "https://s.s-bol.com/imgbase0/imagebase/large/FC/9/0/8/3/9200000010483809.jpg", Product.STUK));
