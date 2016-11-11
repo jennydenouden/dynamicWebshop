@@ -65,6 +65,7 @@ public abstract class Product {
 	public abstract int getEenheid();
 	public abstract int getPrijsPerEenheid();
 	public abstract String getImageURL();
+	public abstract String getDescription();
 	
 	
 }

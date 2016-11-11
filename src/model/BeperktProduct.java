@@ -6,6 +6,7 @@ public class BeperktProduct extends Product {
 	private int prijsPerEenheid;
 	private String imgUrl;
 	private int eenheid;
+	private String description = "BESCHRIJVING HIER";
 	
 	
 	//Constructors
@@ -70,6 +71,15 @@ public class BeperktProduct extends Product {
 	 */
 	public String getImageURL() {
 		return this.imgUrl;
+	}
+
+	/*
+	 * @Override Implementeert de getDescription methode. Geeft een String
+	 * met daarin een omschrijving van het product.
+	 * @see model.Product#getDescription()
+	 */
+	public String getDescription() {
+		return this.description;
 	}
 
 }

@@ -7,8 +7,9 @@ public class KwantumKortingProduct extends Product {
 	//Instantievariabelen
 	private String naam;
 	private int prijsPerEenheid;
-	String imgUrl;
-	int eenheid;
+	private String imgUrl;
+	private int eenheid;
+	private String description = "BESCHRIJVING HIER";
 	
 	//Constructors
 	public KwantumKortingProduct(String naam, int prijsPerEenheid, String imgUrl, int eenheid) {
@@ -73,6 +74,15 @@ public class KwantumKortingProduct extends Product {
 	 */
 	public String getImageURL() {
 		return this.imgUrl;
+	}
+	
+	/*
+	 * @Override Implementeert de getDescription methode. Geeft een String
+	 * met daarin een omschrijving van het product.
+	 * @see model.Product#getDescription()
+	 */
+	public String getDescription() {
+		return this.description;
 	}
 
 }
