@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProductPage
  */
-@WebServlet("/Product")
+@WebServlet("/Product/*")
 public class ProductPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getQueryString());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		String query = request.getQueryString();
+		if(query != null){
+			int index = Integer.parseInt(query.substring(3));
+			request.setAttribute("id", index);
+			request.getRequestDispatcher("/WEB-INF/productx.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
