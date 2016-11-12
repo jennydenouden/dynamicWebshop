@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Product;
+
 /**
  * Servlet implementation class ProductPage
  */
@@ -24,7 +26,12 @@ public class ProductPage extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		int aantal = Integer.parseInt(request.getParameter("aantal"));		
+		int productIndex = Integer.parseInt(request.getQueryString().substring(3));		
+		Product product = Index.voorraad.get(productIndex);		
+		Index.winkelwagen.bestel(product, aantal);		
+		
+		response.sendRedirect("winkelwagen");
 	}
 
 }
