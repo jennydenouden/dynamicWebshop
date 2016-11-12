@@ -39,4 +39,17 @@ public class Winkelwagen {
 		this.bestellingen.add(ph);
 	}
 	
+	/*
+	 * ToString methode voor winkelwagen
+	 */
+	public String toString(){
+		String result = "{\n";
+		for(ProductHoeveelheid ph : bestellingen){
+			result += ph.getHoeveelheid() + "x " + ph.getProductNaam() + "\n";
+		}
+		result += "}";
+		
+		return result;
+	}
+	
 }
