@@ -17,5 +17,10 @@
 <p><strong> <%= product.getDescription() %></strong></p>
 <img src=<%= product.getImageURL() %>>
 <p>Prijs: &euro;<%= product.getPrijsPerEenheid() %></p>
+
+<form method = "post">
+	<input type="number" name="aantal" value="1">
+	<input type="submit" value="Bestel">
+</form>
 </body>
 </html>
