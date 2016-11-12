@@ -39,8 +39,8 @@ public class ProductPage extends HttpServlet {
 			else{
 				request.setAttribute("error", "Onvoldoende voorraad: er "
 						+ "zijn te weinig producten beschikbaar");
-			}
-			doGet(request, response);
+				doGet(request, response);
+			}		
 		}
 		else{
 			request.setAttribute("error", "Foutieve input: je kunt alleen "
