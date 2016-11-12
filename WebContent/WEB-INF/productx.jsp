@@ -18,6 +18,11 @@
 <img src=<%= product.getImageURL() %>>
 <p>Prijs: &euro;<%= product.getPrijsPerEenheid() %></p>
 
+<% String msg = (String) request.getAttribute("error");
+	if(msg != null){%>
+		<strong><%=msg %></strong>
+	<%}
+%>
 <form method = "post">
 	<input type="number" name="aantal" value="1">
 	<input type="submit" value="Bestel">

@@ -27,11 +27,17 @@ public class ProductPage extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int aantal = Integer.parseInt(request.getParameter("aantal"));		
-		int productIndex = Integer.parseInt(request.getQueryString().substring(3));		
-		Product product = Index.voorraad.get(productIndex);		
-		Index.winkelwagen.bestel(product, aantal);		
-		
-		response.sendRedirect("winkelwagen");
+		int productIndex = Integer.parseInt(request.getQueryString().substring(3));	
+		if(aantal > 0){
+			Product product = Index.voorraad.get(productIndex);		
+			Index.winkelwagen.bestel(product, aantal);			
+			response.sendRedirect("winkelwagen");
+		}
+		else{
+			request.setAttribute("error", "Foutieve input: je kunt alleen "
+					+ "een positief aantal producten bestellen");
+			doGet(request, response);
+		}
 	}
 
 }
