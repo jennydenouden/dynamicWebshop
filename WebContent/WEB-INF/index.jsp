@@ -2,9 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.DefaultProduct" %>
 <%@ page import="model.Product" %>
-<% ArrayList<DefaultProduct> al = (ArrayList<DefaultProduct>)(request.getAttribute("voorraad")); %>
 
 <html>
 <head>
