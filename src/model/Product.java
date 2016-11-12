@@ -29,7 +29,20 @@ public abstract class Product {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString(){
-		return "[" + getNaam() + ", " + getEenheid() + ", " + getPrijsPerEenheid() + "]";
+		return "[" + getNaam() + ", " + getEenheidNaam(getEenheid()) + ", " + getPrijsPerEenheid() + "]";
+	}
+	
+	/*
+	 * 
+	 */
+	public boolean equals(Object o){
+		boolean result = false;
+		if(o instanceof Product){
+			Product p = (Product)o;
+			result = p.toString().equals(this.toString());
+		}
+		
+		return result;
 	}
 	
 	/*
