@@ -32,11 +32,22 @@ public class Winkelwagen {
 	}
 	
 	/*
-	 * Voegt een nieuwe bestelregel toe, met hoeveelheid producten
+	 * Voegt een nieuwe bestelregel toe, met hoeveelheid producten. Als
+	 * er al een bestelregel voor dat product staat, wordt die aangepast.
 	 */
 	public void bestel(Product product, int hoeveelheid){
-		ProductHoeveelheid ph = new ProductHoeveelheid(product, hoeveelheid);
-		this.bestellingen.add(ph);
+		boolean found = false;
+		for(ProductHoeveelheid ph : bestellingen){
+			if(ph.getProductNaam().equals(product.getNaam())){
+				found = true;
+				ph.setHoeveelheid(ph.getHoeveelheid()+hoeveelheid);;
+			}
+		}
+		
+		if(!found){
+			ProductHoeveelheid ph = new ProductHoeveelheid(product, hoeveelheid);
+			this.bestellingen.add(ph);
+		}
 	}
 	
 	/*
