@@ -41,33 +41,39 @@ uw hipster-benodigdheden.</p>
 %>
 </table>
 
-<h3>Winkelwagen</h3>
-<table>
-	<tr>
-		<th>Product</th>
-		<th>Aantal</th>
-		<th>Prijs</th>
-	</tr>
 <%
-
 	Winkelwagen winkelwagen = (Winkelwagen)(request.getAttribute("winkelwagen"));
-	
-	for(ProductHoeveelheid ph : winkelwagen.getBestellingen()){%>
-		<tr>
-			<td><%= ph.getProductNaam() %></td>
-			<td><%= ph.getHoeveelheid()%></td>
-			<td> &euro; <%= ph.getPrijs() %></td>
-		</tr>
-	<%}
-
+	if(winkelwagen.getBestellingen().size() > 0){
 %>
-	<tr>
-		<th>Totaal</th>
-		<th></th>
-		<th> &euro;<%= winkelwagen.getTotaalPrijs() %></th>
-	</tr>
 
-</table>
+	<h3>Winkelwagen</h3>
+	<table>
+		<tr>
+			<th>Product</th>
+			<th>Aantal</th>
+			<th>Prijs</th>
+		</tr>
+	<%
+	
+		
+		
+		for(ProductHoeveelheid ph : winkelwagen.getBestellingen()){%>
+			<tr>
+				<td><%= ph.getProductNaam() %></td>
+				<td><%= ph.getHoeveelheid()%></td>
+				<td> &euro; <%= ph.getPrijs() %></td>
+			</tr>
+		<%}
+	
+	%>
+		<tr>
+			<th>Totaal</th>
+			<th></th>
+			<th> &euro;<%= winkelwagen.getTotaalPrijs() %></th>
+		</tr>
+
+	</table>
+<% } %>
   
   
 
