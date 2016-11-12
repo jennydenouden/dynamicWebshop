@@ -25,6 +25,13 @@ public class Winkelwagen {
 	}
 	
 	/*
+	 * Geeft de lijst met bestellinegn in de winkelwagen
+	 */
+	public ArrayList<ProductHoeveelheid> getBestellingen(){
+		return this.bestellingen;
+	}
+	
+	/*
 	 * Voegt een nieuwe bestelregel toe, met hoeveelheid producten
 	 */
 	public void bestel(Product product, int hoeveelheid){
