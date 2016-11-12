@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bestel.Winkelwagen;
 import model.DefaultProduct;
 import model.Product;
 
@@ -19,6 +20,7 @@ import model.Product;
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	public static Winkelwagen winkelwagen = new Winkelwagen();	
 	public static ArrayList<DefaultProduct> voorraad = new ArrayList<>();
 	static {
 		voorraad.add(new DefaultProduct("Opgezette vlinder", 120, "/DynamicWebshop/images/atalanta.jpg", Product.STUK));
@@ -28,6 +30,8 @@ public class Index extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("vlinder", voorraad.get(0));
 		request.setAttribute("lamp", voorraad.get(1));
+		
+		request.setAttribute("voorraad", voorraad);
 		
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 

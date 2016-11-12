@@ -3,6 +3,7 @@
 <!DOCTYPE>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.DefaultProduct" %>
+<%@ page import="model.Product" %>
 <% ArrayList<DefaultProduct> al = (ArrayList<DefaultProduct>)(request.getAttribute("voorraad")); %>
 
 <html>
@@ -19,27 +20,26 @@ uw hipster-benodigdheden.</p>
 <p>Bladiebla, dit kun je bij ons kopen, vul later maar.</p>
 
 
-
 <table>
 	<tr>
 		<th>Naam</th>
 		<th>Prijs</th>
 		<th>Plaatje</th>
 	</tr>
-	<td>
-		<%DefaultProduct vlinder = (DefaultProduct)(request.getAttribute("vlinder")); %>
-		<th><%= vlinder.getNaam() %></th>
-		<th><%= vlinder.getPrijsPerEenheid() %></th>
-		<th> <img src=<%= vlinder.getImageURL() %>></th>	
-	</td>
-	<td>
-		<%DefaultProduct lamp = (DefaultProduct)(request.getAttribute("lamp")); %>
-		<th><%= lamp.getNaam() %></th>
-		<th><%= lamp.getPrijsPerEenheid() %></th>
-		<th> <img src=<%= lamp.getImageURL() %>></th>
-	</td>
-</table>
+<%
 
+	ArrayList<Product> voorraad = (ArrayList<Product>)(request.getAttribute("voorraad"));
+	
+	for(Product p : voorraad){%>
+		<tr>
+			<td><%= p.getNaam() %></td>
+			<td><%= p.getPrijsPerEenheid() %></td>
+			<td> <img src=<%= p.getImageURL() %> width="200" height="200"></td>
+		</tr>
+	<%}
+
+%>
+</table>
   
   
 
