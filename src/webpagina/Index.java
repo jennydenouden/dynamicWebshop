@@ -27,11 +27,9 @@ public class Index extends HttpServlet {
 		voorraad.add(new DefaultProduct("Industriële bouwlamp", 160, "https://s.s-bol.com/imgbase0/imagebase/large/FC/9/0/8/3/9200000010483809.jpg", Product.STUK));
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("vlinder", voorraad.get(0));
-		request.setAttribute("lamp", voorraad.get(1));
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.setAttribute("voorraad", voorraad);
+		request.setAttribute("winkelwagen", winkelwagen);
 		
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
