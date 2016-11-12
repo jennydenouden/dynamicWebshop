@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <%@ page import="model.Product" %>
 <%@ page import="webpagina.Index" %>
+<%@ page import="model.Voorraad" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <% 	int index = (int) request.getAttribute("id"); 
-	Product product = Index.voorraad.get(index);
+	Product product = Voorraad.get(index);
 
 %>
 <title><%= product.getNaam() %></title>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import bestel.Winkelwagen;
 import model.DefaultProduct;
 import model.Product;
+import model.Voorraad;
 
 /**
  * Servlet implementation class Index
@@ -21,14 +22,9 @@ public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public static Winkelwagen winkelwagen = new Winkelwagen();	
-	public static ArrayList<DefaultProduct> voorraad = new ArrayList<>();
-	static {
-		voorraad.add(new DefaultProduct("Opgezette vlinder", 120, "/DynamicWebshop/images/atalanta.jpg", Product.STUK));
-		voorraad.add(new DefaultProduct("Industriële bouwlamp", 160, "https://s.s-bol.com/imgbase0/imagebase/large/FC/9/0/8/3/9200000010483809.jpg", Product.STUK));
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		request.setAttribute("voorraad", voorraad);
+		request.setAttribute("voorraad", Voorraad.voorraad);
 		request.setAttribute("winkelwagen", winkelwagen);
 		
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);

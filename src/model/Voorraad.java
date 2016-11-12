@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 
 public class Voorraad {
-	private static HashMap<Product, Integer> voorraad = new HashMap<>();
+	public static HashMap<Product, Integer> voorraad = new HashMap<>();
 	
 	static{
 		//15 vlinders

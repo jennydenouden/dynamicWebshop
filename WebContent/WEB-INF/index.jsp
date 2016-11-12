@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page import="model.Product" %>
 <%@ page import="bestel.Winkelwagen" %>
 
@@ -28,10 +29,11 @@ uw hipster-benodigdheden.</p>
 	</tr>
 <%
 
-	ArrayList<Product> voorraad = (ArrayList<Product>)(request.getAttribute("voorraad"));
+	HashMap<Product, Integer> voorraad = (HashMap<Product, Integer>)(request.getAttribute("voorraad"));
 	
-	for(Product p : voorraad){%>
+	for(Product p : voorraad.keySet()){%>
 		<tr>
+			<td><%= voorraad.get(p) %></td>
 			<td><%= p.getNaam() %></td>
 			<td><%= p.getPrijsPerEenheid() %></td>
 			<td> <img src=<%= p.getImageURL() %> width="200" height="200"></td>

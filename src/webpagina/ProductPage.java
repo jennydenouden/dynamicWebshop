@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Product;
+import model.Voorraad;
 
 /**
  * Servlet implementation class ProductPage
@@ -29,9 +30,17 @@ public class ProductPage extends HttpServlet {
 		int aantal = Integer.parseInt(request.getParameter("aantal"));		
 		int productIndex = Integer.parseInt(request.getQueryString().substring(3));	
 		if(aantal > 0){
-			Product product = Index.voorraad.get(productIndex);		
-			Index.winkelwagen.bestel(product, aantal);			
-			response.sendRedirect("winkelwagen");
+			Product product = Voorraad.get(productIndex);
+			boolean gelukt = Voorraad.removeProducts(product, aantal);
+			if(gelukt){
+				Index.winkelwagen.bestel(product, aantal);		
+				response.sendRedirect("winkelwagen");
+			}
+			else{
+				request.setAttribute("error", "Onvoldoende voorraad: er "
+						+ "zijn te weinig producten beschikbaar");
+			}
+			doGet(request, response);
 		}
 		else{
 			request.setAttribute("error", "Foutieve input: je kunt alleen "
