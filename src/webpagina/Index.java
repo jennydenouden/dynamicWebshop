@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bestel.Winkelwagen;
 import model.DefaultProduct;
@@ -20,12 +21,16 @@ import model.Voorraad;
 @WebServlet("/index.html")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	public static Winkelwagen winkelwagen = new Winkelwagen();	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.setAttribute("voorraad", Voorraad.voorraad);
-		request.setAttribute("winkelwagen", winkelwagen);
+		
+		HttpSession session = request.getSession(false);
+		if(session == null){
+			session = request.getSession();
+		}
+		session.setAttribute("winkelwagen", new Winkelwagen());
+		request.setAttribute("winkelwagen", session.getAttribute("winkelwagen"));		
 		
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 

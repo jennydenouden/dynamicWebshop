@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bestel.Winkelwagen;
 import model.Product;
 import model.Voorraad;
 
@@ -33,7 +34,8 @@ public class ProductPage extends HttpServlet {
 			Product product = Voorraad.get(productIndex);
 			boolean gelukt = Voorraad.removeProducts(product, aantal);
 			if(gelukt){
-				Index.winkelwagen.bestel(product, aantal);		
+				Winkelwagen winkelwagen = (Winkelwagen) request.getSession().getAttribute("winkelwagen");
+				winkelwagen.bestel(product, aantal);		
 				response.sendRedirect("winkelwagen");
 			}
 			else{

@@ -15,7 +15,7 @@ public class WinkelwagenOverzicht extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		request.setAttribute("winkelwagen", Index.winkelwagen);
+		request.setAttribute("winkelwagen", request.getSession().getAttribute("winkelwagen"));
 		request.getRequestDispatcher("/WEB-INF/winkelwagen.jsp").forward(request, response);
 	}
 
