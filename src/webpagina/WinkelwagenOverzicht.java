@@ -20,7 +20,14 @@ public class WinkelwagenOverzicht extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("POST WINKELWAGENOVERZICHT");
+		
+		if(request.getParameter("bestel") != null ){
+			request.getRequestDispatcher("WEB-INF/adresgegevens.jsp").forward(request, response);;
+		}
+		
+		if(request.getParameter("delete") != null){
+			response.getWriter().append("Delete");
+		}
 	}
 
 }
