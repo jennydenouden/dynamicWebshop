@@ -13,24 +13,25 @@
 	<form method = "post" action = "succes">
 		<%
 			Adresgegevens agg = (Adresgegevens) request.getAttribute("adresgegevens");	
-			System.out.println(agg);
+			//boolean allFieldsEmpty = agg.allFieldsEmpty();
 		%>
 		
-		<c:if test="${ !agg.nameValid() && !agg.allFieldsEmpty() }">
+		<c:if test="${ !agg.allFieldsEmpty && !agg.nameValid}">
+			Bla
 			<strong>${ agg.naamerror }</strong><br>
 		</c:if>
 		Naam : <input type="text" name = "naam" value = <c:if test="${agg.NameValid()}">"${agg.naam }"</c:if>> <br>
 		
 		
-		<c:if test="${ !agg.AdresValid()&& !agg.allFieldsEmpty()}">
+		<c:if test="${ !agg.AdresValid()&& !agg.allFieldsEmpty}">
 			<strong>${ agg.getAdresError() }</strong><br>
 		</c:if>
 		Adres : <input type="text" name = "adres"> <br>
-		<c:if test="${ !agg.PostcodeValid()&& !agg.allFieldsEmpty() }">
+		<c:if test="${ !agg.PostcodeValid()&& !agg.allFieldsEmpty }">
 			<strong>${ agg.postcodeerror }</strong><br>
 		</c:if>
 		Postcode : <input type="text" name = "postcode"> <br>
-		<c:if test="${ !agg.telNrValid() && !agg.allFieldsEmpty()}">
+		<c:if test="${ !agg.telNrValid() && !agg.allFieldsEmpty}">
 			<strong>${ agg.telnrerror }</strong><br>
 		</c:if>
 		Telefoonnummer :  <input type="text" name = "telNr"> <br>

@@ -50,7 +50,8 @@ public class Adresgegevens {
 	}
 	
 	public boolean nameValid(){
-		return !naam.equals("");
+		return naam != null &&
+				!naam.equals("");
 	}
 	public boolean adresValid(){
 		return (adres != null && 
@@ -72,8 +73,10 @@ public class Adresgegevens {
 				isNumber(telNr);
 	}
 	
-	public boolean allFieldsEmpty(){
-		return naam == null && adres == null && postcode == null && telNr == null;
+	public boolean getAllFieldsEmpty(){
+		boolean result = naam == null && adres == null && postcode == null && telNr == null;		
+		naam = adres = postcode = telNr = "";		
+		return result;
 	}
 	
 	
