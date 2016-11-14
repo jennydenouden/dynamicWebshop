@@ -30,15 +30,19 @@ uw hipster-benodigdheden.</p>
 <%
 
 	HashMap<Product, Integer> voorraad = (HashMap<Product, Integer>)(request.getAttribute("voorraad"));
-	
+	int index = 0;
 	for(Product p : voorraad.keySet()){%>
-		<tr>
-			<td><%= voorraad.get(p) %></td>
-			<td><%= p.getNaam() %></td>
-			<td><%= p.getPrijsPerEenheid() %></td>
-			<td> <img src=<%= p.getImageURL() %> width="200" height="200"></td>
-		</tr>
-	<%}
+		
+			<tr>
+				<td><%= voorraad.get(p) %></td>
+				<td><a href="Product?id=<%=index %>" ><%= p.getNaam() %></a></td>
+				<td><%= p.getPrijsPerEenheid() %></td>
+				<td> <img src=<%= p.getImageURL() %> width="200" height="200"></td>
+			</tr>
+		
+	<%
+		index++;
+	}
 
 %>
 </table>
@@ -60,11 +64,11 @@ uw hipster-benodigdheden.</p>
 		
 		
 		for(ProductHoeveelheid ph : winkelwagen.getBestellingen()){%>
-			<tr>
-				<td><%= ph.getProductNaam() %></td>
-				<td><%= ph.getHoeveelheid()%></td>
-				<td> &euro; <%= ph.getPrijs() %></td>
-			</tr>
+				<tr>
+					<td><%= ph.getProductNaam() %></td>
+					<td><%= ph.getHoeveelheid()%></td>
+					<td> &euro; <%= ph.getPrijs() %></td>
+				</tr>
 		<%}
 	
 	%>
