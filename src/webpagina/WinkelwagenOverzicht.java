@@ -22,7 +22,8 @@ public class WinkelwagenOverzicht extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("bestel") != null ){
-			request.getRequestDispatcher("WEB-INF/adresgegevens.jsp").forward(request, response);;
+			request.setAttribute("adresgegevens", new Adresgegevens());
+			request.getRequestDispatcher("/WEB-INF/adresgegevens.jsp").forward(request, response);
 		}
 		
 		if(request.getParameter("delete") != null){
